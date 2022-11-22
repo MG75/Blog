@@ -71,7 +71,7 @@ class PostsController < ApplicationController
       params.require(:post).permit(:title, :body)
     end
 
-    def authorize_user
+    def authorize_user!
       unless @post.user == current_user
         redirect_to root_path, notice: "You don't have permissions to do that."
       end
