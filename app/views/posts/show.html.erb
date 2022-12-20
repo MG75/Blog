@@ -3,11 +3,13 @@
 <div>
   <%= link_to "Edit this post", edit_post_path(@post) %> |
   <%= link_to "Back to posts", posts_path %>
-
   <%= button_to "Destroy this post", @post, method: :delete %>
-   
 </div>
 <div>
-<h3>Comments</h3>
-<%= render @comments %>
+  <h3>Comments</h3>
+  <div>
+    <%= render 'comments/form', post: @post, comment: Comment.new %>
+  </div>
+  <p><%= pluralize(@comments.count, 'comment') %></p>
+  <%= render @comments %>
 </div>
